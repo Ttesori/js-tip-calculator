@@ -1,11 +1,25 @@
-document.querySelector('.splitter-percents').addEventListener('change', (e) => {
+import TipCalc from './TipCalc.js';
+import UI from './UI.js';
 
-});
+const setUpEventListeners = () => {
+  UI.els.percentsContainer.addEventListener('change', e => handlePercentChange(e));
+  UI.els.numBill.addEventListener('change', e => console.log(e.target.value));
+  UI.els.numPeople.addEventListener('change', e => console.log(e.target.value));
+  UI.els.btnReset.addEventListener('click', e => console.log(e));
+}
 
-// TODO: Handle clicks on tip amount
-// - Remove selected class on currently selected element
-// // document.querySelector('.selected').classList.remove('selected');
-// - Add selected class to label parentelement
-// //  e.target.parentElement.classList.add('selected');
-// - set current tip amount
-// if bill amount entered, update results
+const handlePercentChange = (e) => {
+  console.log('Updating percent change...')
+  UI.handlePercentChange(e);
+}
+
+const handleUpdateTotals = () => {
+  console.log('updating totals...')
+}
+
+const init = () => {
+  setUpEventListeners();
+  console.log(TipCalc.calculate(30, .2, 2));
+}
+
+init();
