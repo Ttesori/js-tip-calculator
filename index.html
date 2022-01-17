@@ -17,7 +17,7 @@
     <fieldset class="row">
       <label for="num-bill" class="splitter-label">Bill</label>
       <img src="images/icon-dollar.svg" width="16" alt="US Dollar Symbol" class="field-icon">
-      <input type="number" name="num-bill" id="num-bill" class="splitter-txt">
+      <input type="number" name="num-bill" id="num-bill" class="splitter-txt" placeholder="0">
     </fieldset>
     <fieldset class="row">
       <label class="splitter-label">Select Tip %</label>
@@ -51,7 +51,7 @@
     <fieldset class="row">
       <label for="" class="splitter-label">Number of People</label>
       <img src="images/icon-person.svg" width="16" alt="Person Symbol" class="field-icon">
-      <input type="number" name="num-people" id="num-people" class="splitter-txt">
+      <input type="number" name="num-people" id="num-people" class="splitter-txt" placeholder="0">
     </fieldset>
 
     <div class="tip-results">
@@ -60,14 +60,14 @@
           Tip Amount
           <span class="result-label-per">/ person</span>
         </label>
-        <input type="text" name="" id="" class="result-num" value="$123">
+        <input type="text" name="result-tip" id="result-tip" class="result-num" value="$0.00">
       </div>
       <div class="result-row">
         <label class="result-label">
           Total
           <span class="result-label-per">/ person</span>
         </label>
-        <input type="text" name="" id="" class="result-num">
+        <input type="text" name="result-total" id="result-total" class="result-num" value="$0.00">
       </div>
       <button class="result-btn-reset">Reset</button>
     </div>

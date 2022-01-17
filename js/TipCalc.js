@@ -1,7 +1,10 @@
 class TipCalc {
   static calculate(bill, tip, people) {
     const calcBill = bill / people;
-    return [calcBill, calcBill * tip]
+
+    const formatMoney = num => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(num);
+
+    return [formatMoney(calcBill), formatMoney(calcBill * tip)]
   }
 }
 
