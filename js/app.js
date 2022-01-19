@@ -30,6 +30,9 @@ const handlePercentChange = (e) => {
     if (state.bill > 0 && state.people > 0) {
       handleUpdateTotals();
     }
+  } else {
+
+    UI.els.customPercentContainer.value = '';
   }
   UI.handlePercentChange(e);
 }
@@ -62,6 +65,8 @@ const handleBillChange = (e) => {
     if (state.bill > 0 && state.people > 0) {
       handleUpdateTotals();
     }
+  } else {
+    UI.handleErrorField(e, 'Must be more than 0');
   }
 }
 
@@ -74,6 +79,8 @@ const handlePeopleChange = (e) => {
     if (state.bill > 0 && state.people > 0) {
       handleUpdateTotals();
     }
+  } else {
+    UI.handleErrorField(e, 'Must be more than 0');
   }
 }
 

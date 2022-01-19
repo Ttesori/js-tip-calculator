@@ -25,6 +25,27 @@ class UI {
     this.els.txtResultTotal.value = total;
   }
 
+  static handleErrorField(e, msg) {
+    // Add error class to current field
+    e.target.classList.add('error');
+    // Display error message
+    const alertEl = this._createErrorAlert(msg);
+    e.target.parentElement.appendChild(alertEl);
+    setTimeout(() => {
+      e.target.parentElement.removeChild(alertEl);
+      e.target.classList.remove('error');
+    }, 3500);
+    // Reset field
+    e.target.value = '';
+  }
+
+  static _createErrorAlert = (msg) => {
+    const msgEl = document.createElement('div');
+    msgEl.textContent = msg;
+    msgEl.classList.add('alert-error');
+    return msgEl;
+  }
+
   static resetUI(state) {
     console.log('resetting UI', state);
     this.els.numBill.value = state.bill;

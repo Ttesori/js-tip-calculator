@@ -77,6 +77,11 @@ body {
   text-align: right;
   width: 100%;
   color: var(--primary-dark);
+  transition: outline 0.5s ease-in-out;
+}
+
+.splitter-txt:focus-visible {
+  outline: 2px solid var(--primary);
 }
 
 .splitter-txt::placeholder {
@@ -133,9 +138,30 @@ body {
   border-radius: 0.5rem;
 }
 
-.percent-label-custom .splitter-txt.selected,
-.percent-label-custom .splitter-txt:focus-visible {
-  outline: 3px solid var(--primary);
+.percent-label-custom .splitter-txt.selected {
+  outline: 2px solid var(--primary);
+}
+
+input.error {
+  outline: 2px solid salmon !important;
+}
+.alert-error {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  color: salmon;
+  font-size: 0.7rem;
+  opacity: 100;
+  animation: fadeOut 0.5s ease-out 2.5s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 100;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .tip-results {
@@ -188,6 +214,7 @@ body {
   font-weight: bold;
   border-radius: 0.5rem;
   margin-top: 1rem;
+  cursor: pointer;
 }
 
 .attribution {
