@@ -26,6 +26,10 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .splitter-header {
@@ -46,8 +50,6 @@ body {
   background: var(--neutral-white);
   padding: 2rem 2rem 3rem 2rem;
   border-radius: 2rem;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
   max-width: 375px;
   margin: 0 auto;
 }
@@ -234,4 +236,40 @@ a:active.link-footer {
 
 a:visited.link-footer {
   color: var(--neutral-dark-75);
+}
+
+@media screen and (min-width: 960px) {
+  .splitter-header {
+    padding-bottom: 4rem;
+  }
+  .splitter-main {
+    max-width: 920px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    padding: 2rem 2rem 2rem 2.5rem;
+    box-shadow: 5px 5px 25px hsla(hue, saturation, lightness, alpha);
+  }
+  .splitter-percents {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .percent-label,
+  .percent-label-custom .splitter-txt {
+    padding: 0.5rem;
+  }
+  .tip-results {
+    display: grid;
+    grid-template-rows: 1fr 1fr 2fr;
+    margin-top: 0;
+  }
+  .result-row {
+    grid-template-columns: 3fr 4fr;
+    align-content: center;
+  }
+  .result-num {
+    font-size: 2.5rem;
+  }
+  .result-btn-reset {
+    align-self: end;
+  }
 }
