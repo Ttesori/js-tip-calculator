@@ -1,7 +1,7 @@
 import TipCalc from './TipCalc.js';
 import UI from './UI.js';
 
-const state = {
+const initialState = {
   bill: 0,
   tip: 5,
   numPeople: 0,
@@ -9,12 +9,16 @@ const state = {
   resultTotal: 0
 }
 
+let state = {
+  ...initialState
+}
+
 const setUpEventListeners = () => {
   UI.els.percentsContainer.addEventListener('change', e => handlePercentChange(e));
   UI.els.customPercentContainer.addEventListener('focus', e => handleCustomFocus(e));
   UI.els.numBill.addEventListener('change', e => handleBillChange(e));
   UI.els.numPeople.addEventListener('change', e => handlePeopleChange(e));
-  UI.els.btnReset.addEventListener('click', e => console.log('reset', e));
+  UI.els.btnReset.addEventListener('click', handleReset);
 }
 
 const handlePercentChange = (e) => {
@@ -71,6 +75,11 @@ const handlePeopleChange = (e) => {
       handleUpdateTotals();
     }
   }
+}
+
+const handleReset = () => {
+  state = { ...initialState };
+  UI.resetUI(state);
 }
 
 const init = () => {
