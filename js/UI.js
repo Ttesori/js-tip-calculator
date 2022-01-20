@@ -1,4 +1,5 @@
 class UI {
+  // Set up elements
   static els = {
     percentsContainer: document.querySelector('.splitter-percents'),
     customPercentContainer: document.querySelector('#percent-custom'),
@@ -6,20 +7,24 @@ class UI {
     numPeople: document.querySelector('#num-people'),
     btnReset: document.querySelector('.result-btn-reset'),
     txtResultTip: document.querySelector('#result-tip'),
-    txtResultTotal: document.querySelector('#result-total')
+    txtResultTotal: document.querySelector('#result-total'),
+    percent5: document.querySelector('#percent-5'),
+    form: document.forms[0]
   }
 
+  // Show selected class on selected percentage
   static handlePercentChange(e) {
     document.querySelector('.selected').classList.remove('selected');
-    console.log(e);
     e.target.parentElement.classList.add('selected');
   }
 
-  static handleCustomFocus(e) {
+  // Outline custom tip if selected
+  static handleCustomFocus() {
     document.querySelector('.selected').classList.remove('selected');
     this.els.customPercentContainer.classList.add('selected');
   }
 
+  // Display results
   static handleUpdateResults(tip, total) {
     this.els.txtResultTip.value = tip;
     this.els.txtResultTotal.value = total;
@@ -31,6 +36,7 @@ class UI {
     // Display error message
     const alertEl = this._createErrorAlert(msg);
     e.target.parentElement.appendChild(alertEl);
+    // Remove error message after 3500ms
     setTimeout(() => {
       e.target.parentElement.removeChild(alertEl);
       e.target.classList.remove('error');
@@ -39,6 +45,7 @@ class UI {
     e.target.value = '';
   }
 
+  // Create alert element
   static _createErrorAlert = (msg) => {
     const msgEl = document.createElement('div');
     msgEl.textContent = msg;
@@ -46,17 +53,22 @@ class UI {
     return msgEl;
   }
 
+  // Reset fields
   static resetUI(state) {
     console.log('resetting UI', state);
     this.els.numBill.value = state.bill;
     this.els.numPeople.value = state.numPeople;
     this.els.txtResultTip.value = '$0.00';
     this.els.txtResultTotal.value = '$0.00';
+  }
+
+  // Reset tip percentage
+  static resetPercentage() {
     document.querySelector('.selected').classList.remove('selected');
-    const form = document.forms[0];
-    const radio = form.elements['percent'];
+    const radio = this.els.form.elements['percent'];
     radio.value = '5';
-    document.querySelector('#percent-5').parentElement.classList.add('selected');
+    this.els.percent5.parentElement.classList.add('selected');
+    console.log(this.els.percent5.parentElement.classList);
     this.els.customPercentContainer.value = '';
   }
 

@@ -1,6 +1,7 @@
 import TipCalc from './TipCalc.js';
 import UI from './UI.js';
 
+// Initial/Reset App State
 const initialState = {
   bill: 0,
   tip: 5,
@@ -13,6 +14,12 @@ let state = {
   ...initialState
 }
 
+// On application load
+const init = () => {
+  setUpEventListeners();
+}
+
+// Set up event listeners
 const setUpEventListeners = () => {
   UI.els.percentsContainer.addEventListener('change', e => handlePercentChange(e));
   UI.els.customPercentContainer.addEventListener('focus', e => handleCustomFocus(e));
@@ -21,77 +28,71 @@ const setUpEventListeners = () => {
   UI.els.btnReset.addEventListener('click', handleReset);
 }
 
-const handlePercentChange = (e) => {
-  console.log('Updating percent change...');
+
+
+// When value in Bill changes
+const handleBillChange = (e) => {
   const value = Number(e.target.value);
   if (value >= 0) {
-    state.tip = value;
-    console.log(state);
-    if (state.bill > 0 && state.people > 0) {
-      handleUpdateTotals();
-    }
+    state.bill = Number(value).toFixed(2);
+    handleUpdateTotals();
   } else {
-
-    UI.els.customPercentContainer.value = '';
+    UI.handleErrorField(e, 'Must be more than 0');
   }
-  UI.handlePercentChange(e);
 }
 
+// When a new percentage is clicked
+const handlePercentChange = (e) => {
+  // Get field value
+  const value = Number(e.target.value);
+
+  if (value >= 0) {
+    state.tip = value; // Update state
+    UI.handlePercentChange(e);
+    handleUpdateTotals(); // Update totals
+  } else {
+    // If value is invalid
+    UI.resetPercentage();
+  }
+
+}
+
+// When a custom focus is entered
 const handleCustomFocus = (e) => {
   const value = Number(e.target.value);
   if (value >= 0) {
     state.tip = value;
-    if (state.bill > 0 && state.people > 0) {
-      handleUpdateTotals();
-    }
-  }
-  UI.handleCustomFocus(e);
-}
-
-const handleUpdateTotals = () => {
-  console.log('updating totals...')
-  const result = TipCalc.calculate(state.bill, (state.tip / 100), state.people);
-  state.resultTotal = result[0];
-  state.resultTip = result[1];
-  UI.handleUpdateResults(state.resultTip, state.resultTotal);
-}
-
-const handleBillChange = (e) => {
-  console.log('updating bill...');
-  const value = Number(e.target.value);
-  if (value >= 0) {
-    state.bill = Number(value).toFixed(2);
-    console.log(state);
-    if (state.bill > 0 && state.people > 0) {
-      handleUpdateTotals();
-    }
-  } else {
-    UI.handleErrorField(e, 'Must be more than 0');
+    UI.handleCustomFocus(e);
+    handleUpdateTotals();
   }
 }
 
+// When value in People changes
 const handlePeopleChange = (e) => {
-  console.log('updating people...');
   const value = Number(e.target.value);
   if (value >= 0) {
     state.people = value;
-    console.log(state);
-    if (state.bill > 0 && state.people > 0) {
-      handleUpdateTotals();
-    }
+    handleUpdateTotals();
   } else {
     UI.handleErrorField(e, 'Must be more than 0');
   }
 }
 
+// When totals need to be updated
+const handleUpdateTotals = () => {
+  if (state.bill > 0 && state.people > 0) { // if valid values in bill and people
+    const result = TipCalc.calculate(state.bill, (state.tip / 100), state.people);
+    state.resultTotal = result[0];
+    state.resultTip = result[1];
+    UI.handleUpdateResults(state.resultTip, state.resultTotal);
+  }
+}
+
+// When Reset button is clicked
 const handleReset = () => {
   state = { ...initialState };
   UI.resetUI(state);
 }
 
-const init = () => {
-  setUpEventListeners();
-  console.log(state);
-}
 
-init();
+window.addEventListener('DOMContentLoaded', init);
