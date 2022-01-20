@@ -79,10 +79,12 @@ body {
   text-align: right;
   width: 100%;
   color: var(--primary-dark);
-  transition: outline 0.5s ease-in-out;
+  outline: 2px solid transparent;
+  transition: outline 0.3s ease-in-out;
 }
 
-.splitter-txt:focus-visible {
+.splitter-txt:focus-visible,
+.splitter-txt:hover {
   outline: 2px solid var(--primary);
 }
 
@@ -121,10 +123,12 @@ body {
   text-align: center;
   border-radius: 0.5rem;
   position: relative;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 
-.percent-label.selected {
+.percent-label.selected,
+.percent-label:hover {
   background: var(--primary);
   color: var(--primary-dark);
   font-weight: bold;
@@ -227,6 +231,7 @@ input.error {
 
 a:link.link-footer {
   color: var(--primary-dark);
+  transition: all 0.2s ease-in-out;
 }
 
 a:hover.link-footer,
