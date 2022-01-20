@@ -221,6 +221,12 @@ input.error {
   border-radius: 0.5rem;
   margin-top: 1rem;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.result-btn-reset:hover {
+  background: var(--neutral-white);
+  transform: scale(1.03);
 }
 
 .attribution {
