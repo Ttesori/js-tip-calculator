@@ -1,6 +1,6 @@
 # Frontend Mentor - Tip calculator app solution
 
-This is a solution to the [Tip calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is a solution to the [Tip calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX).
 
 ## Overview
 
@@ -14,26 +14,33 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/Ttesori/js-tip-calculator](https://github.com/Ttesori/js-tip-calculator)
+- Live Site URL: [https://js-tipcalc.netlify.app/](https://js-tipcalc.netlify.app/)
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
+- HTML5 / CSS3
 - Mobile-first workflow
+- Vanilla JavaScript
+- ES6 Classes
+- ES6 Modules
 
 ### What I learned
 
+- How to style custom radio buttons
+- How to manipulate radio buttons in JS
+- Great practice with CSS Grid (use fr not %!)
+
 ### Continued development
 
-### Useful resources
+- Would love to build this again in React to experience the differences
+- Would like to add a 'Calculate' button at the bottom of the settings for usability
+- Would like to run an accessibility audit to see where I can improve
 
 ## Author
 
 - Website - [Toni Tesori](https://www.tonitesori.dev
+- Github - [@ttesori](https://github.com/Ttesori)
 - Twitter - [@ttesori](https://www.twitter.com/ttesori)
